@@ -11,21 +11,38 @@ import LoginPage from "pages/users/login";
 import SignupPage from "pages/users/signup";
 import { Navigate, Route, Routes } from "react-router-dom";
 
-export default function Router() {
+interface RouterProps {
+  isAuthenticated: boolean;
+}
+
+export default function Router({ isAuthenticated }: RouterProps) {
   return (
     <Routes>
-      <Route path="/" element={<HomePage />}></Route>
-      <Route path="/posts" element={<Post />}></Route>
-      <Route path="/posts/:id" element={<PostDetail />}></Route>
-      <Route path="/posts/new" element={<PostNew />}></Route>
-      <Route path="/posts/edit/:id" element={<PostEdit />}></Route>
-      <Route path="/profile" element={<ProfilePage />}></Route>
-      <Route path="/profile/edit" element={<ProfileEdit />}></Route>
-      <Route path="/notifications" element={<NotificationsPage />}></Route>
-      <Route path="/search" element={<SearchPage />}></Route>
-      <Route path="/users/login" element={<LoginPage />}></Route>
-      <Route path="/users/signup" element={<SignupPage />}></Route>
-      <Route path="*" element={<Navigate replace to="/"></Navigate>}></Route>
+      {isAuthenticated ? (
+        <>
+          <Route path="/" element={<HomePage />} />
+          <Route path="/posts" element={<Post />} />
+          <Route path="/posts/:id" element={<PostDetail />} />
+          <Route path="/posts/new" element={<PostNew />} />
+          <Route path="/posts/edit/:id" element={<PostEdit />} />
+          <Route path="/profile" element={<ProfilePage />} />
+          <Route path="/profile/edit" element={<ProfileEdit />} />
+          <Route path="/notifications" element={<NotificationsPage />} />
+          <Route path="/search" element={<SearchPage />} />
+          <Route path="/users/login" element={<LoginPage />} />
+          <Route path="/users/signup" element={<SignupPage />} />
+          <Route path="*" element={<Navigate replace to="/"></Navigate>} />
+        </>
+      ) : (
+        <>
+          <Route path="/users/login" element={<LoginPage />} />
+          <Route path="/users/signup" element={<SignupPage />} />
+          <Route
+            path="*"
+            element={<Navigate replace to="/users/login"></Navigate>}
+          />
+        </>
+      )}
     </Routes>
   );
 }

@@ -19,7 +19,7 @@ body {
   min-height: 100vh;
 }
 
-.button, .post__box-footer button, .post-form__submit-btn {
+.button, .form__btn--submit, .form__btn--github, .form__btn--google, .post__box-footer button, .post-form__submit-btn {
   padding: 0.2rem 0.8rem;
   border-radius: 999px;
   font-size: 12px;
@@ -28,6 +28,19 @@ body {
   border: none;
   cursor: pointer;
   box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+}
+
+.transparent, .home__top {
+  background-color: transparent;
+  backdrop-filter: blur(10px);
+}
+
+.sticky, .home__top {
+  width: 100%;
+  position: sticky;
+  max-width: 680px;
+  margin: 0 auto;
+  top: 0;
 }
 
 .footer {
@@ -44,7 +57,7 @@ body {
 }
 .footer__grid {
   display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
+  grid-template-columns: repeat(4, minmax(0, 1fr));
   background-color: transparent;
 }
 .footer__grid button {
@@ -59,17 +72,38 @@ body {
   backdrop-filter: blur(10px);
 }
 
+.home__search-div {
+  display: flex;
+  justify-content: center;
+}
+.home__search {
+  background-color: #263340;
+  border-radius: 20px;
+  margin-bottom: 20px;
+  padding: 12px;
+  width: 90% !important;
+  font-size: 16px;
+  font-weight: 600;
+}
+.home__search:focus {
+  border: 1px solid #60a5fa;
+  background-color: rgba(60, 73, 95, 0.3725490196);
+}
 .home__title {
+  background-color: transparent;
+  width: 90%;
   padding: 16px;
   font-weight: 700;
   font-size: 20px;
 }
 .home__tabs {
+  background-color: transparent;
   width: 100%;
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
 }
 .home__tab {
+  background-color: transparent;
   text-align: center;
   font-weight: 500;
   padding: 16px;
@@ -83,6 +117,36 @@ body {
   background-color: rgba(60, 73, 95, 0.3725490196);
 }
 
+.post-form__input, .home__search {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell", " Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
+  padding: 8px;
+  border: none;
+  resize: none;
+  outline: none;
+  margin-top: 8px;
+  width: calc(100% - 32px);
+}
+.post-form__hashtags {
+  padding: 16px;
+  border-bottom: 1px solid #708090;
+}
+.post-form__hashtags-outputs {
+  gap: 8px 1px;
+  align-items: center;
+}
+.post-form__hashtags-tag {
+  font-size: 14px;
+  border: 1px solid #60a5fa;
+  color: #60a5fa;
+  border-radius: 10px;
+  padding: 2px 8px;
+  margin-right: 6px;
+  cursor: pointer;
+}
+.post-form__hashtags-tag:hover, .post-form__hashtags-tag:focus {
+  color: #3b82f6;
+  border: 1px solid #3b82f6;
+}
 .post-form__textarea {
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell", " Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
   min-height: 120px;
@@ -123,6 +187,24 @@ body {
 
 .post {
   padding-bottom: 40px;
+}
+.post__header button {
+  border: none;
+  padding: 16px;
+}
+.post__header-btn {
+  width: 20px;
+  height: 20px;
+  cursor: pointer;
+}
+.post__no-posts {
+  padding: 16px;
+}
+.post__no-posts .post__text {
+  font-size: 14px;
+  border: 1px solid gray;
+  padding: 16px;
+  border-radius: 4px;
 }
 .post__flex, .post__box-footer button.post__likes, .post__box-footer button.post__comments {
   display: flex;
@@ -180,4 +262,79 @@ body {
 }
 .post__box-footer button.post__likes:hover, .post__box-footer button.post__likes:focus, .post__box-footer button.post__comments:hover, .post__box-footer button.post__comments:focus {
   color: gray;
+}
+
+.form {
+  margin: 0 atuo;
+  max-width: 680px;
+  padding: 20px;
+}
+.form input {
+  height: 20px;
+  padding: 10px;
+  border-radius: 0.3rem;
+  border: 1px solid lightgray;
+  width: 96%;
+  max-width: 680px;
+}
+.form__block {
+  margin-top: 20px;
+  width: 100%;
+}
+.form__block--lg {
+  margin-top: 28px;
+  width: 100%;
+}
+.form label {
+  display: block;
+  font-weight: 500;
+  margin-bottom: 10px;
+  margin-top: 20px;
+}
+.form__btn--submit, .form__btn--github, .form__btn--google {
+  width: 100%;
+  height: 48px;
+  font-weight: 600;
+  padding: 10px;
+  cursor: pointer;
+  font-size: 16px;
+  margin: 0 auto;
+  color: white;
+  background-color: #60a5fa;
+}
+.form__btn--submit:hover, .form__btn--github:hover, .form__btn--google:hover, .form__btn--submit:focus, .form__btn--github:focus, .form__btn--google:focus {
+  background-color: #3b82f6;
+}
+.form__title {
+  text-align: center;
+  font-size: 24px;
+  font-weight: 700;
+  padding-bottom: 20px;
+}
+.form__link {
+  margin-left: 10px;
+  text-decoration: none;
+  color: #9ca3af;
+}
+.form__link:hover, .form__link:focus {
+  color: #6b7280;
+}
+.form__error {
+  color: red;
+}
+.form__btn--google {
+  background-color: white;
+  color: #3b82f6;
+}
+.form__btn--google:hover, .form__btn--google:focus {
+  background-color: #60a5fa;
+  color: #fff;
+}
+.form__btn--github {
+  background-color: black;
+  color: white;
+}
+.form__btn--github:hover, .form__btn--github:focus {
+  background-color: rgba(60, 73, 95, 0.3725490196);
+  color: #fff;
 }/*# sourceMappingURL=index.css.map */
